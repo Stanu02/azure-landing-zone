@@ -3,11 +3,8 @@
 ## What this project does
 Automatically deploys a web app to Azure App Service every time code is pushed to GitHub.
 
-## Live URL
-https://webapp-cicd-tanu-001.azurewebsites.net
-
 ## Architecture
-Push code → GitHub Actions triggers → Deploys to Azure App Service → Live on internet
+Push code to GitHub -> GitHub Actions triggers -> Deploys to Azure App Service -> Live on internet
 
 ## Screenshots
 ### Live App
