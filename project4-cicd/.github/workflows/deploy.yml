@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'project4-cicd/**'
 
 jobs:
   deploy:
