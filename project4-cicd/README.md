@@ -1,34 +1,35 @@
-# Project 4 - GitHub Actions CI/CD Pipeline
+# Project 4 - CI/CD Pipeline
 
-## What this project does
-Automatically deploys a web app to Azure App Service every time code is pushed to GitHub.
+## What I built
 
-## Architecture
-Push code to GitHub -> GitHub Actions triggers -> Deploys to Azure App Service -> Live on internet
+GitHub Actions workflow that deploys to Azure App Service automatically on every push to main. Push code, robot deploys it. That's it.
 
 ## Screenshots
-### Live App
+
+### Live app
 ![Live App](./screenshots/live-app.png)
 
-### GitHub Actions Workflow
+### GitHub Actions runs
 ![GitHub Actions](./screenshots/github-actions.png)
 
-## Resources created
-- Azure Resource Group
-- App Service Plan (Linux, B1)
-- Linux Web App (Node.js 18)
-- GitHub Actions workflow for automated deployment
+## What took the longest
+
+Getting the deployment to actually serve the right files. The whole repo was being deployed instead of just the project4-cicd folder. Then App Service wasn't picking up server.js as the startup file. Had to set it manually with az webapp config set --startup-file.
 
 ## AWS equivalent
+
 - App Service = AWS Elastic Beanstalk
 - GitHub Actions = AWS CodePipeline + CodeBuild
 
 ## How to deploy
+
 ```bash
 terraform init
 terraform plan
 terraform apply
 ```
+
+Then add AZURE_WEBAPP_PUBLISH_PROFILE to GitHub Secrets before pushing.
 
 ## Author
 Tanupriya Dehariya
