@@ -1,24 +1,25 @@
-# Project 2 - Hub-Spoke Network Topology
+# Project 2 - Hub-Spoke Network
 
-## What this project does
-Provisions an enterprise hub-spoke network architecture in Azure using Terraform.
+## What I built
 
-## Architecture
-![Hub-Spoke Topology](./screenshots/hub-spoke-topology.png)
+Three VNets connected in a hub-spoke topology. Hub in the middle, two spokes hanging off it. NSG on the hub subnet with SSH allow and deny-all rules.
 
-## Resources created
-- Hub VNet (10.0.0.0/16)
-- Spoke1 VNet (10.1.0.0/16)
-- Spoke2 VNet (10.2.0.0/16)
-- VNet Peering (bidirectional - hub to each spoke)
-- Network Security Group with SSH allow and deny-all rules
+## Why hub-spoke
+
+Most enterprise networks use this pattern. Central hub for shared services like firewalls and VPN. Spokes for individual workloads. Spokes can't talk to each other directly — everything goes through the hub.
+
+## One thing that caught me out
+
+Azure VNet peering is not automatic in both directions. You need two peering rules per connection — hub to spoke AND spoke to hub. AWS Transit Gateway handles this automatically. Azure doesn't.
 
 ## AWS equivalent
+
 - VNet = AWS VPC
 - VNet Peering = Transit Gateway attachments
 - NSG = Security Groups + NACLs
 
 ## How to deploy
+
 ```bash
 terraform init
 terraform plan
